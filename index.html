@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="fronteers">
 <head>
   <title>fronteer demo</title>
   <link rel="stylesheet" href="./css/style.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular.min.js"></script>
+  <script src="js/script.js"></script>
 </head>
-<body>
+<body >
+<div ng-controller="page">
   <h1>Fronteers grunt demo</h1>
-  <div>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
-    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Etiam porta sem malesuada magna mollis euismod. Sed posuere consectetur est at lobortis. Donec ullamcorper nulla non metus auctor fringilla.</p>
-  </div>
+  <p ng-repeat="p in paragraphs">
+    {{p.text}}
+  </p>
+</div>
 </body>
 </html>

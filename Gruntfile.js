@@ -29,8 +29,8 @@ module.exports = function (grunt) {
         tasks: ['sass:dev']
       },
       js: {
-        files: ['./js/scripts.js'],
-        tasks: ['jshint']
+        files: ['./js/src/**/*.js'],
+        tasks: [ 'concat', 'jshint']
       }
     },
     jshint: {
@@ -38,7 +38,7 @@ module.exports = function (grunt) {
         jshintrc: '.jshintrc'
       },
       all: [
-        'js/scripts.js'
+        'js/script.js'
       ]
     },
     sass: {
@@ -50,6 +50,12 @@ module.exports = function (grunt) {
           './css/style.css': './sass/style.scss'
         }
       }
+    },
+    concat: {
+      dist: {
+        src: ['js/src/**/*.js'],
+        dest: 'js/script.js'
+      }
     }
   });
 
@@ -58,6 +64,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   grunt.registerTask('server', [
     'connect',
