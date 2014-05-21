@@ -44,6 +44,14 @@ module.exports = function (grunt) {
     sass: {
       dev: {
         options: {
+          outputStyle: 'nested'
+        },
+        files: {
+          './css/style.css': './sass/style.scss'
+        }
+      },
+      prod: {
+        options: {
           outputStyle: 'compressed'
         },
         files: {
@@ -52,11 +60,23 @@ module.exports = function (grunt) {
       }
     },
     concat: {
-      dist: {
+      dev: {
         src: ['js/src/**/*.js'],
         dest: 'js/script.js'
       }
+    },
+    uglify: {
+      prod: {
+        options: {
+          mangle: true,
+          compress: true
+        },
+        files: {
+          'js/script.js': ['js/script.js']
+        }
+      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-sass');
@@ -65,6 +85,18 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  // Task aliases and tasks
+  grunt.registerTask('prod', [
+    'sass:prod',
+    'concat',
+    'uglify:prod'
+  ]);
+
+  grunt.registerTask('compile', [
+    'concat',
+  ]);
 
   grunt.registerTask('server', [
     'connect',
