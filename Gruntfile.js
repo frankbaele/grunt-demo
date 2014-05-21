@@ -27,7 +27,19 @@ module.exports = function (grunt) {
       css: {
         files: ['./sass/**/*.scss'],
         tasks: ['sass:dev']
+      },
+      js: {
+        files: ['./js/scripts.js'],
+        tasks: ['jshint']
       }
+    },
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      all: [
+        'js/scripts.js'
+      ]
     },
     sass: {
       dev: {
@@ -45,6 +57,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   grunt.registerTask('server', [
     'connect',
